@@ -2,7 +2,7 @@ package Assingment1;
 
 public class Event extends Post{
 
-	private String check;
+	private String What;
 	private String Venue;
 	private String Date;
 	private int Capacity;
