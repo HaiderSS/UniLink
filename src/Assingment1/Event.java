@@ -2,7 +2,6 @@ package Assingment1;
 
 public class Event extends Post{
 
-	private String What;
 	private String Venue;
 	private String Date;
 	private int Capacity;
@@ -42,10 +41,51 @@ public class Event extends Post{
 
 	@Override
 	public String getReplyDetails() {
-		// TODO Auto-generated method stub
-		return null;
+		String AttendeeList = null;
+		if(Replies.size() > 0)
+		{
+			AttendeeList = "Attendee List : ";
+			for(int i=0;i<Replies.size();i++){
+				if(Replies.get(i).getValue() == 1)
+					AttendeeList += Replies.get(i).getResponderID();
+			}
+
+		}
+		return AttendeeList;
 	}
-	
+
+	// Getter and setters methods below
+	public String getVenue() {
+		return Venue;
+	}
+
+	public int getAttendeeCount() {
+		return AttendeeCount;
+	}
+
+	public void setAttendeeCount(int attendeeCount) {
+		AttendeeCount = attendeeCount;
+	}
+
+	public String getDate() {
+		return Date;
+	}
+
+	public void setDate(String date) {
+		Date = date;
+	}
+
+	public int getCapacity() {
+		return Capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		Capacity = capacity;
+	}
+
+	public void setVenue(String venue) {
+		Venue = venue;
+	}
 	
 
 }
