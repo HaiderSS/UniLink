@@ -19,8 +19,8 @@ public abstract class Post {
 	
 	public String getPostDetails() {
 		String temp;
-		temp = "ID : "+ Id + "/n" + "Title : " + title + "/n" + "Description : " + Description +
-				"/n" + "Creator ID : " + CreaterID + "/n" + "Status : " + status + "/n";  
+		temp = "ID : "+ Id + "\n" + "Title : " + title + "\n" + "Description : " + Description +
+				"\n" + "Creator ID : " + CreaterID + "\n" + "Status : " + status + "\n";  
 		return temp;
 	}
 	

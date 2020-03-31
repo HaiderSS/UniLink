@@ -19,8 +19,8 @@ public class Event extends Post{
 	public String getPostDetails() {
 		String temp;
 		temp = super.getPostDetails();
-		temp += "Venue : "+ Venue + "/n" + "Date : "+ Date + "/n" + "Capacity : "+ Capacity + "/n" +
-				"Attendees : "+ AttendeeCount + "/n";
+		temp += "Venue : "+ Venue + "\n" + "Date : "+ Date + "\n" + "Capacity : "+ Capacity + "\n" +
+				"Attendees : "+ AttendeeCount + "\n";
 		return temp;
 	}
 
