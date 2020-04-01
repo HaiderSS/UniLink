@@ -4,7 +4,7 @@ import java.util.ArrayList; // import the ArrayList class
 
 public abstract class Post {
 	
-	public static String Id;
+	protected static String Id;
 	private String title;
 	private String Description;
 	private String CreaterID;
@@ -12,7 +12,10 @@ public abstract class Post {
 	protected ArrayList<Reply> Replies;
 
 	
-	protected Post(String eventname, String description){
+	protected Post(String id ,String Title, String description){
+		Id = id;
+		title = Title;
+		Description = description;
 		Replies = new ArrayList<Reply>(); // Create an ArrayList object
 		status = true;
 	}
@@ -35,7 +38,8 @@ public abstract class Post {
 
 	// abstract methods
 	public abstract boolean handleReply(Reply reply);
-	public abstract String getReplyDetails();
-	
 
+	public abstract String getReplyDetails();
+
+	public abstract String getPostId();
 }

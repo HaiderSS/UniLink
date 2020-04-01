@@ -1,17 +1,24 @@
 package Assingment1;
 
 public class Job extends Post{
+    public static int JobCount;
     private double ProposedPrice;
     private double LowestOffer;
 
 //Constructor
-    public Job(String eventname, String description, double proposedPrice, double lowestOffer) {
-        super(eventname, description);
+    public Job(String eventname, String description, double proposedPrice) {
+        super("JOB00"+(JobCount+1),eventname, description);
+        JobCount += 1;
         ProposedPrice = proposedPrice;
-        LowestOffer = lowestOffer;
+        LowestOffer = 0;
     }
 
 // Methods
+
+    @Override
+    public String getPostId() {
+        return super.Id;
+    }
 
     @Override
     public String getPostDetails()

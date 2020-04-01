@@ -1,29 +1,29 @@
 package Assingment1;
 
 public class Sale extends Post{
+    public static int SaleCount;
     private double AskingPrice;
     private double HighestOffer;
     private double MinimumRate;
 
     // constructors
 
-    public Sale(String eventname, String description)
+    public Sale(String eventname, String description, double askingprice, double minimumrate)
     {
-        super(eventname, description);
-        AskingPrice = 0;
-        HighestOffer = 0;
-        MinimumRate = 0;
-    }
-
-    public Sale(String eventname, String description, double askingprice, double highestoffer, double minimumrate)
-    {
-        super(eventname, description);
+        super("SAL00"+(SaleCount+1),eventname, description);
+        SaleCount += 1;
         AskingPrice = askingprice;
-        HighestOffer = highestoffer;
+        HighestOffer = 0;
         MinimumRate = minimumrate;
     }
 
     // other methods
+
+    @Override
+    public String getPostId() {
+        return super.Id;
+    }
+
     @Override
     public String getPostDetails()
     {

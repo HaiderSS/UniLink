@@ -1,18 +1,24 @@
 package Assingment1;
 
 public class Event extends Post{
-
+	public static int EventCount;
 	private String Venue;
 	private String Date;
 	private int Capacity;
 	private int AttendeeCount;
 
 	public Event(String eventname, String description, String venue, String date, int capacity) {
-		super(eventname, description);
+		super("EVE00"+(EventCount+1),eventname, description);
+		EventCount += 1;
 		Venue = venue;
 		Date = date;
 		Capacity = capacity;
 		AttendeeCount = 0;
+	}
+
+	@Override
+	public String getPostId() {
+		return super.Id;
 	}
 	
 	@Override
@@ -34,6 +40,7 @@ public class Event extends Post{
 		if(reply.getValue()==1 && super.isStatus())
 		{
 			Replies.add(reply);
+			AttendeeCount += 1;
 			return true;
 		}
 		return false;
