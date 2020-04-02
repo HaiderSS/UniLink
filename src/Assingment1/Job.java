@@ -6,11 +6,11 @@ public class Job extends Post{
     private double LowestOffer;
 
 //Constructor
-    public Job(String eventname, String description, double proposedPrice) {
-        super("JOB00"+(JobCount+1),eventname, description);
+    public Job(String eventname, String description, String createrid, double proposedPrice) {
+        super("JOB00"+(JobCount+1),eventname, description, createrid);
         JobCount += 1;
         ProposedPrice = proposedPrice;
-        LowestOffer = 0;
+        LowestOffer = proposedPrice; // at the start proposed price is lowest price
     }
 
 // Methods
@@ -18,6 +18,11 @@ public class Job extends Post{
     @Override
     public String getPostId() {
         return super.Id;
+    }
+
+    @Override
+    public String getCreaterID() {
+        return super.CreaterID;
     }
 
     @Override

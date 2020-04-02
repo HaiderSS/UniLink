@@ -7,8 +7,8 @@ public class Event extends Post{
 	private int Capacity;
 	private int AttendeeCount;
 
-	public Event(String eventname, String description, String venue, String date, int capacity) {
-		super("EVE00"+(EventCount+1),eventname, description);
+	public Event(String eventname, String description, String createrid, String venue, String date, int capacity) {
+		super("EVE00"+(EventCount+1),eventname, description, createrid);
 		EventCount += 1;
 		Venue = venue;
 		Date = date;
@@ -19,6 +19,11 @@ public class Event extends Post{
 	@Override
 	public String getPostId() {
 		return super.Id;
+	}
+
+	@Override
+	public String getCreaterID() {
+		return super.CreaterID;
 	}
 	
 	@Override
@@ -34,13 +39,14 @@ public class Event extends Post{
 	@Override
 	public boolean handleReply(Reply reply) {
 		// to set status based on capacity
-		if(AttendeeCount == Capacity) {
-			super.setStatus(false);
-		}
+
 		if(reply.getValue()==1 && super.isStatus())
 		{
 			Replies.add(reply);
 			AttendeeCount += 1;
+			if(AttendeeCount == Capacity) {
+				super.setStatus(false);
+			}
 			return true;
 		}
 		return false;

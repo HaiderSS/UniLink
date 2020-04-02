@@ -8,9 +8,9 @@ public class Sale extends Post{
 
     // constructors
 
-    public Sale(String eventname, String description, double askingprice, double minimumrate)
+    public Sale(String eventname, String description, String createrid, double askingprice, double minimumrate)
     {
-        super("SAL00"+(SaleCount+1),eventname, description);
+        super("SAL00"+(SaleCount+1),eventname, description, createrid);
         SaleCount += 1;
         AskingPrice = askingprice;
         HighestOffer = 0;
@@ -22,6 +22,11 @@ public class Sale extends Post{
     @Override
     public String getPostId() {
         return super.Id;
+    }
+
+    @Override
+    public String getCreaterID() {
+        return super.CreaterID;
     }
 
     @Override

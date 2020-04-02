@@ -4,26 +4,27 @@ import java.util.ArrayList; // import the ArrayList class
 
 public abstract class Post {
 	
-	protected static String Id;
+	protected String Id;
 	private String title;
 	private String Description;
-	private String CreaterID;
+	protected String CreaterID;
 	private boolean status;
 	protected ArrayList<Reply> Replies;
 
 	
-	protected Post(String id ,String Title, String description){
+	protected Post(String id ,String Title, String description, String createrid){
 		Id = id;
 		title = Title;
 		Description = description;
 		Replies = new ArrayList<Reply>(); // Create an ArrayList object
+		CreaterID = createrid;
 		status = true;
 	}
 	
 	public String getPostDetails() {
 		String temp;
 		temp = "ID : "+ Id + "\n" + "Title : " + title + "\n" + "Description : " + Description +
-				"\n" + "Creator ID : " + CreaterID + "\n" + "Status : " + status + "\n";  
+				"\n" + "Creator ID : " + CreaterID + "\n" + "Status : " + status + "\n";
 		return temp;
 	}
 	
@@ -42,4 +43,7 @@ public abstract class Post {
 	public abstract String getReplyDetails();
 
 	public abstract String getPostId();
+
+	public abstract String getCreaterID();
+
 }
