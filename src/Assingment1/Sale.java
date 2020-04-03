@@ -34,7 +34,7 @@ public class Sale extends Post{
     {
         String temp;
         temp = super.getPostDetails();
-        temp += "Minimum raise : "+ MinimumRate + "\n" + "Highest offer : "+ HighestOffer + "\n";
+        temp += "Minimum raise : "+ MinimumRate + "\n" + "Highest offer : "+ HighestOffer;
         return temp;
     }
 

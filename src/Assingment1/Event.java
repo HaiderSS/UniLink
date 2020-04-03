@@ -31,7 +31,7 @@ public class Event extends Post{
 		String temp;
 		temp = super.getPostDetails();
 		temp += "Venue : "+ Venue + "\n" + "Date : "+ Date + "\n" + "Capacity : "+ Capacity + "\n" +
-				"Attendees : "+ AttendeeCount + "\n";
+				"Attendees : "+ AttendeeCount;
 		return temp;
 	}
 
@@ -54,17 +54,17 @@ public class Event extends Post{
 
 	@Override
 	public String getReplyDetails() {
-		String AttendeeList = null;
+		String AttendeeList = "";
 		if(Replies.size() > 0)
 		{
 			AttendeeList = "Attendee List : ";
 			for(int i=0;i<Replies.size();i++){
 				if(Replies.get(i).getValue() == 1)
-					AttendeeList += Replies.get(i).getResponderID();
+					AttendeeList += Replies.get(i).getResponderID() + ", ";
 			}
 
 		}
-		return AttendeeList;
+		return AttendeeList.substring(0,AttendeeList.length()-1);
 	}
 
 	// Getter and setters methods below

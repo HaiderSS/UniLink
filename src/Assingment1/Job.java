@@ -30,7 +30,7 @@ public class Job extends Post{
     {
         String temp;
         temp = super.getPostDetails();
-        temp += "Proposed Price : "+ ProposedPrice + "\n" + "Lowest offer : "+ LowestOffer + "\n";
+        temp += "Proposed Price : "+ ProposedPrice + "\n" + "Lowest offer : "+ LowestOffer;
         return temp;
     }
     
