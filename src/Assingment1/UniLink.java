@@ -2,26 +2,35 @@ package Assingment1;
 import java.util.*;
 
 public class UniLink {
+    public static ArrayList<Post> Posts = new ArrayList<Post>(); // for keeping posts
+
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 
         // creating parent class array list for polymorphism
-        ArrayList<Post> Posts = new ArrayList<Post>();
+
+        Scanner input = new Scanner(System.in); // for  integer input
+        Scanner input1 = new Scanner(System.in); // for string input
+
+        String username;
+        String tempID;
         int choice;
 
         do {
-            System.out.println("\n**  UniLink System  **");
-            System.out.println("1. Log in");
-            System.out.println("2. Quit\n");
 
-            Scanner input = new Scanner(System.in); // for  integer input
-            Scanner input1 = new Scanner(System.in); // for string input
+            do{  // validation for user input
+                System.out.println("\n**  UniLink System  **");
+                System.out.println("1. Log in");
+                System.out.println("2. Quit\n");
 
-            String username;
-            String tempID;
+                System.out.println("Enter Your Choice");
+                choice = input.nextInt();
+            }while(choice!=1 && choice !=2);
 
-            System.out.println("Enter Your Choice");
-            choice = input.nextInt();
+            if(choice == 2)
+            {
+                return;
+            }
 
             do{ // username validation
                 System.out.println("Enter username");
@@ -119,19 +128,43 @@ public class UniLink {
                     } else if (choice == 4) // reply to post
                     {
                         String tempPostID;
+                        boolean sameuserbit= true;
+                        ArrayList<Reply> keepit = new ArrayList<Reply>(); // for keeping creator ids
+
                         System.out.print("Enter post id or 'Q' to quit: ");
                         tempPostID = input1.nextLine();
                         for (int i = 0; i < Posts.size(); i++) {
                             if (tempPostID.equals(Posts.get(i).getPostId())) {
-                                System.out.println(Posts.get(i).getPostDetails());
-                                System.out.print("Enter your offer or 'Q' to quit: ");
-                                double tempOffer = input.nextDouble();
-                                Reply tempr = new Reply(tempPostID, tempOffer, username);
-                                boolean tempStatus = Posts.get(i).handleReply(tempr);
-                                if (tempStatus) {
-                                    System.out.println("Offer Accepted!");
-                                } else {
-                                    System.out.println("Offer not Accepted!");
+                                if(Posts.get(i).getCreaterID() != username) // creater of post check
+                                {
+                                    keepit = Posts.get(i).getReplies();
+                                    //for(int j=0;j<keepit.size();j++)
+                                    for (Reply r: keepit)
+                                    {
+                                        if(username.equals(r.getResponderID()))
+                                        {
+                                            sameuserbit = false;
+                                        }
+                                    }
+                                    if(sameuserbit) // same user reply check
+                                    {
+                                        System.out.println(Posts.get(i).getPostDetails());
+                                        System.out.print("Enter your offer or 'Q' to quit: ");
+                                        double tempOffer = input.nextDouble();
+                                        Reply tempr = new Reply(tempPostID, tempOffer, username);
+                                        boolean tempStatus = Posts.get(i).handleReply(tempr);
+                                        if (tempStatus) {
+                                            System.out.println("Offer Accepted!");
+                                        } else {
+                                            System.out.println("Offer not Accepted!");
+                                        }
+                                    }
+                                    else{
+                                        System.out.println("This user have already replied on this post");
+                                    }
+                                }
+                                else{
+                                    System.out.println("Creator of the post cannot reply to their own post");
                                 }
                             }
                         }
@@ -141,7 +174,9 @@ public class UniLink {
                         for (int i = 0; i < Posts.size(); i++) {
                             if (username.equals(Posts.get(i).getCreaterID())) {
                                 System.out.println(Posts.get(i).getPostDetails());
+                                System.out.println();
                                 System.out.println(Posts.get(i).getReplyDetails());
+                                System.out.println();
                             }
                         }
                     } else if (choice == 6) // display all posts
@@ -150,6 +185,7 @@ public class UniLink {
                         for (int i = 0; i < Posts.size(); i++) // loop through whole posts
                         {
                             System.out.println(Posts.get(i).getPostDetails());
+                            System.out.println();
                         }
 
                     } else if (choice == 7) // close post

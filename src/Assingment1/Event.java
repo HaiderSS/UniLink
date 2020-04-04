@@ -54,7 +54,7 @@ public class Event extends Post{
 
 	@Override
 	public String getReplyDetails() {
-		String AttendeeList = "";
+		String AttendeeList = null;
 		if(Replies.size() > 0)
 		{
 			AttendeeList = "Attendee List : ";
@@ -64,7 +64,7 @@ public class Event extends Post{
 			}
 
 		}
-		return AttendeeList.substring(0,AttendeeList.length()-1);
+		return AttendeeList;
 	}
 
 	// Getter and setters methods below

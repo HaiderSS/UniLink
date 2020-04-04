@@ -37,6 +37,10 @@ public abstract class Post {
 		this.status = status;
 	}
 
+	public ArrayList<Reply> getReplies() {
+		return Replies;
+	}
+
 	// abstract methods
 	public abstract boolean handleReply(Reply reply);
 
